@@ -9,10 +9,14 @@ import {
   VIcon,
   VGrid,
   VToolbar,
+  VCard,
+  VTabs,
+  VTextField,
+  VDivider,
   transitions
 } from 'vuetify'
 import 'vuetify/src/stylus/app.styl'
-
+import 'material-design-icons-iconfont/dist/material-design-icons.css' 
 Vue.use(Vuetify, {
   components: {
     VApp,
@@ -23,6 +27,10 @@ Vue.use(Vuetify, {
     VIcon,
     VGrid,
     VToolbar,
+    VCard,
+    VTabs,
+    VTextField,
+    VDivider,
     transitions
   },
   theme: {
