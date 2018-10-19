@@ -18,15 +18,15 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Raleway:800');
 .header {
     width: 100%;
 }
 .header h1 {
     float: left;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 67px;
-    font-weight: 700;
+    font-weight: 800;
     color: #190836;
 }
 .header h1:first-letter {

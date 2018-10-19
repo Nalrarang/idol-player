@@ -1,29 +1,14 @@
 <template>
     <div class="album-list">
-        <md-card>
-            <md-card-actions>
-            <div>
-                <md-button @click.native="prependSlide">Prepend Slide</md-button>
-                <md-button @click.native="appendSlide">Append Slide</md-button>
-                <md-button @click.native="popSlide">Pop Slide</md-button>
-                <md-button @click.native="shiftSlide">Shift Slide</md-button>
-            </div>
-            <md-button class="md-icon-button"
-                        target="_blank"
-                        href="https://github.com/surmon-china/vue-awesome-swiper/blob/master/examples/29-dynamic-slides.vue">
-                <md-icon>code</md-icon>
-            </md-button>
-            </md-card-actions>
-            <md-card-media>
+        <v-card>
             <!-- swiper -->
             <swiper :options="swiperOption">
-                <swiper-slide v-for="slide in swiperSlides" :key="slide">Slide {{ slide }}</swiper-slide>
-                <div class="swiper-pagination" slot="pagination"></div>
-                <div class="swiper-button-prev" slot="button-prev"></div>
-                <div class="swiper-button-next" slot="button-next"></div>
+                <swiper-slide v-for="slide in swiperSlides" :key="slide">
+                    <div class="album">album {{ slide }}</div>
+
+                </swiper-slide>
             </swiper>
-            </md-card-media>
-        </md-card>
+        </v-card>
     </div>    
 </template>
 
@@ -41,19 +26,11 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
     data() {
       return {
         swiperOption: {
-          slidesPerView: 3,
-          centeredSlides: true,
+          slidesPerView: 4,
+          centeredSlides: false,
           spaceBetween: 30,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-          },
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-          }
         },
-        swiperSlides: [1, 2, 3, 4, 5]
+        swiperSlides: [1,2,3,4,5]
       }
     },
     methods: {
@@ -78,12 +55,10 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
 .album-list {
     clear: both;
 }
-  .append-buttons {
-    text-align: center;
-    margin-top: 20px;
-  }
-  .append-buttons a {
-    display: inline-block;
-    margin: 0 10px;
-  }
+.album {
+    border: 1px solid black;
+    width: 250px;
+    height: 250px;
+}
+
 </style>
