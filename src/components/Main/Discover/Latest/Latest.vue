@@ -17,8 +17,12 @@ import AlbumList from './AlbumList/AlbumList.vue'
 export default {
     components: {
         AlbumList
-    }
-
+    },
+    methods: {
+    },
+    mounted() {
+        this.$store.dispatch('getNewRelease')
+    },
 }
 </script>
 
