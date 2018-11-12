@@ -7,7 +7,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     releaseData: [],
-    counter: 0
   },
   getters: {
     getReleaseData: function(state) {
@@ -15,14 +14,16 @@ export default new Vuex.Store({
     } 
   },
   mutations: {
-
-
+    fetch_release_data(state, payload) {
+        console.log('fetch_release_data', payload)
+        state.releaseData = payload.data
+    }
   },
   actions: {
-    getNewRelease: function(context) {
-      const res = albumService.getRelease()
+    async getNewRelease(context) {
+      const res = await albumService.getRelease()
       console.log(res)
-      // context.commit('fetch_release_data')
+      context.commit('fetch_release_data', res)
     }
   }
 })

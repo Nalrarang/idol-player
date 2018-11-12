@@ -6,7 +6,6 @@
             <v-icon>chevron_right</v-icon>
         </div>
         <AlbumList />
-
     </div>
 
 </template>
