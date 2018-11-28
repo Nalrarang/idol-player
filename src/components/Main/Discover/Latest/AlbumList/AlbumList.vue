@@ -1,20 +1,28 @@
 <template>
+  <div>
+    <h3 class="sub-header">RELEASE THIS WEEKED</h3>
+    <div class="arrow-action">
+        <v-icon class="button-prev">chevron_left</v-icon>
+        <v-icon class="button-next">chevron_right</v-icon>
+    </div>
+
     <div class="album-list">
-        {{ releaseAlbum }}
-        <v-card>
-            <!-- swiper -->
+        <v-card class="slide">
+            <!-- swiper -->            
             <swiper :options="swiperOption">
-                <swiper-slide v-for="slide in getReleaseData.list" :key="slide.release">
+                <swiper-slide v-for="slide in getReleaseData.list" :key="slide.release">                    
+                  <template v-if="slide">
                     <div class="album">
                       <img :src="slide.cover" />
-                      
-
+                      <p>{{ slide.artist }}</p>
+                      <p>{{ slide.title }}</p>
                     </div>
-
+                  </template>
                 </swiper-slide>
             </swiper>
         </v-card>
-    </div>    
+    </div>
+  </div>    
 </template>
 
 
@@ -39,8 +47,11 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
           slidesPerView: 4,
           centeredSlides: false,
           spaceBetween: 30,
+          navigation: {
+            nextEl: '.button-next',
+            prevEl: '.button-prev'
+          }
         },
-        swiperSlides: [1,2,3,4]
       }
     },
     computed: {
@@ -48,36 +59,50 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
             return this.$store.getters.getReleaseData;
         }
     },
-    methods: {
-      appendSlide() {
-        this.swiperSlides.push(this.swiperSlides.length + 1)
-      },
-      prependSlide() {
-        this.swiperSlides.unshift(this.swiperSlides[0] - 1)
-      },
-      popSlide() {
-        this.swiperSlides.pop()
-      },
-      shiftSlide() {
-        this.swiperSlides.shift()
-      }
-    }
+    mounted() {
+        this.$store.dispatch('getNewRelease')
+    },
   }
 </script>
 
 
 <style>
+.latest-wrap {
+    margin-top: 50px;
+    width: 100%;
+    position: relative;
+}
+.latest-wrap:after {
+    content: '';
+    display: inline-block;
+    height: 1px;
+    background: #B2BACA;
+    position: absolute;
+    right: 50px;
+    left: 198px;
+    top: 12px;
+}
+.sub-header {
+    color: #B2BACA;
+    float: left;
+}
+.arrow-action {
+    float: right;
+}
+.slide {
+    box-shadow: none !important;
+}
 .album-list {
     clear: both;
 }
 .album {
-    border: 1px solid black;
     width: 250px;
     height: 250px;
+    text-align: center; 
 }
 .album img {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 </style>

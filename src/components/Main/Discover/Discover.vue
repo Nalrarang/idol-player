@@ -34,7 +34,9 @@ export default {
 
 <style>
 .discover {
-    padding: 50px; 
+    padding: 50px;
+    height: 800px;
+    overflow-y: auto;
 }
 
 </style>
