@@ -38,6 +38,5 @@ export default {
     height: 800px;
     overflow-y: auto;
 }
-
 </style>
 
